@@ -36,11 +36,17 @@ class Form extends Component {
         this.props.history.push(this.props.next);
     }
 
+    routeToPrev = () => {
+        this.props.history.push(this.props.prev);
+    }
+
 
     render() {
         return (
             <>
                 <h1>{this.props.question}</h1>
+                {this.props.prev && <Button onClick={this.routeToPrev} variant="contained" color="primary">Prev</Button> }
+                
                 <form onSubmit={this.submit}>
                     {this.props.reducer === "SET_COMMENTS" ?
                         <TextField
@@ -62,9 +68,6 @@ class Form extends Component {
                             value={this.state.input}
                             onChange={event => this.handleChangeFor(event)}
                         >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
                             <MenuItem value={1}>1</MenuItem>
                             <MenuItem value={2}>2</MenuItem>
                             <MenuItem value={3}>3</MenuItem>

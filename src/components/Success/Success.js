@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 class Success extends Component {
     resetForm = () => {
@@ -17,7 +18,7 @@ class Success extends Component {
         return (
             <div className="reviewPage">
                 <h1>Thank You!</h1>
-                <button onClick={this.resetForm} >Leave New Feedback</button>
+                <Button onClick={this.resetForm} type="submit" variant="outlined" color="primary">Leave New Feedback</Button>
             </div>
         );
     }

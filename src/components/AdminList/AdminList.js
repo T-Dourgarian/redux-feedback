@@ -3,6 +3,11 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import AdminItem from "../AdminItem/AdminItem";
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import Table from '@material-ui/core/Table';
 
 class Admin extends Component {
 
@@ -22,30 +27,30 @@ class Admin extends Component {
     render() {
         return (
             <>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
                                 Feeling
-                           </td>
-                            <td>
+                           </TableCell>
+                            <TableCell>
                                 Comprehension
-                           </td>
-                            <td>
+                           </TableCell>
+                            <TableCell>
                                 Support
-                           </td>
-                            <td>
+                           </TableCell>
+                            <TableCell>
                                 Comments
-                           </td>
-                            <td>
+                           </TableCell>
+                            <TableCell>
                                 delete
-                           </td>
-                        </tr>
-                    </thead>
-                    <tbody>
+                           </TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {this.props.adminDataReducer.map(feedback => <AdminItem key={feedback.id} feedback={feedback}/>)}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </>
         );
     }
