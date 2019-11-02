@@ -2,9 +2,26 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+
 class Form extends Component {
     state = {
         input: "1"
+
+    }
+
+    componentDidMount = () => {
+        if (this.props.reducer === "SET_COMMENTS") {
+            this.setState({
+                input: ""
+            })
+        }
     }
 
     handleChangeFor = (event) => {
@@ -22,19 +39,40 @@ class Form extends Component {
 
     render() {
         return (
-            <>  
+            <>
                 <h1>{this.props.question}</h1>
                 <form onSubmit={this.submit}>
                     {this.props.reducer === "SET_COMMENTS" ?
-                        <input value={this.state.input} onChange={event => this.handleChangeFor(event)} /> :
-                        <select onChange={event => this.handleChangeFor(event)}>
-                            <option value="1" >1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>}
-                    <button type="submit">Next</button>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="Comments"
+                            multiline
+                            rows="5"
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.input}
+                            onChange={event => this.handleChangeFor(event)}
+                        /> :
+
+                        <FormControl>
+                        <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
+                        <Select
+                            labelId="demo-controlled-open-select-label"
+                            id="demo-controlled-open-select"
+                            value={this.state.input}
+                            onChange={event => this.handleChangeFor(event)}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
+                        </Select>
+                    </FormControl>}
+                    <Button id="submitBtn" type="submit" variant="contained" color="primary">Next</Button>
                 </form>
             </>
         );
