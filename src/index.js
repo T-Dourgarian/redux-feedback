@@ -21,9 +21,17 @@ const formReducer = (state={}, action) => {
     return state;
 }
 
+const adminDataReducer = (state=[],action) => {
+    if(action.type === "SET_ADMIN_DATA") {
+        return [...action.payload];
+    }
+    return state;
+}
+
 const storeInstance = createStore(
     combineReducers({
-        formReducer
+        formReducer,
+        adminDataReducer
     })
 );
 

@@ -24,6 +24,20 @@ app.post('/form', (req, res) => {
         })
 })
 
+app.get('/form', (req, res) => {
+    console.log(req.body);
+   let queryText = `SELECT * FROM "feedback" ORDER BY "id" DESC`;
+
+    pool.query(queryText)
+        .then(result => {
+            console.log(result.rows);
+            res.send(result.rows);
+        }).catch(error => {
+            console.log(error);
+            res.sendStatus(500)
+        })
+})
+
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);
