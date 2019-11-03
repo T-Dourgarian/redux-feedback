@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 
 class Form extends Component {
     handleSubmit = () => {
@@ -35,6 +36,11 @@ class Form extends Component {
     render() {
         return (
             <div className="reviewPage">
+                <header className="App-header">
+                    <h1 className="App-title">Feedback!</h1>
+                    <h4><i>Don't forget it!</i></h4>
+                    <Link to="/admin"><Button id="adminRouteBtn" variant="outlined" color="primary" onClick={this.routeToAdmin}>Admin</Button></Link>
+                </header>
                 <h1>Review Your Feedback</h1>
                 <h3>Feelings: {this.props.formReducer.feeling}</h3>
                 <h3>Understanding: {this.props.formReducer.understanding}</h3>

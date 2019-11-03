@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import { Link } from 'react-router-dom';
 
 
 class Form extends Component {
@@ -59,7 +60,7 @@ class Form extends Component {
 
     handleChangeForTextArea = (event) => {
         this.setState({
-            input:event.target.value
+            input: event.target.value
         })
     }
 
@@ -76,6 +77,12 @@ class Form extends Component {
     render() {
         return (
             <>
+
+                <header className="App-header">
+                    <h1 className="App-title">Feedback!</h1>
+                    <h4><i>Don't forget it!</i></h4>
+                    <Link to="/admin"><Button id="adminRouteBtn" variant="outlined" color="primary" onClick={this.routeToAdmin}>Admin</Button></Link>
+                </header>
                 <h1>{this.props.question}</h1>
 
                 <form onSubmit={this.submit}>
@@ -88,9 +95,9 @@ class Form extends Component {
                             margin="normal"
                             variant="outlined"
                             value={this.state.input}
-                            onChange={(event,value) => this.handleChangeForTextArea(event,value)}
-                        /> : 
-                        <MySlider handleChangeFor={this.handleChangeFor} input={this.state.input}/>
+                            onChange={(event, value) => this.handleChangeForTextArea(event, value)}
+                        /> :
+                        <MySlider handleChangeFor={this.handleChangeFor} input={this.state.input} />
                     }
 
 

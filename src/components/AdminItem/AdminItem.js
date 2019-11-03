@@ -15,16 +15,17 @@ class Admin extends Component {
     }
 
     deleteRow = () => {
-        console.log(this.props.feedback.id);
-        axios({
-            url: `/form/${this.props.feedback.id}`,
-            method: "DELETE"
-        }).then(response => {
-            console.log("Delete Successful")
-            this.props.refreshFeedback();
-        }).catch(error => {
-            console.log("ERROR in delete", error);
-        })
+        if(window.confirm("Are you sure want to delete this feedback?")) {
+            axios({
+                url: `/form/${this.props.feedback.id}`,
+                method: "DELETE"
+            }).then(response => {
+                console.log("Delete Successful")
+                this.props.refreshFeedback();
+            }).catch(error => {
+                console.log("ERROR in delete", error);
+            })
+        }
     }
 
     handleCheckBox = (event) => {
