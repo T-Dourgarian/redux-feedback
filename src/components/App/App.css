@@ -35,3 +35,15 @@
   margin-left: 3%;
   margin-right: 3%;
 }
+
+#adminRouteBtn {
+  color:#033076;
+  background-color: rgb(196, 196, 196);
+  border:1px solid white;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+a:link {
+  text-decoration: none;
+}

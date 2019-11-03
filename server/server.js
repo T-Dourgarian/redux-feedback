@@ -46,6 +46,18 @@ app.delete("/form/:id",(req,res) => {
         })
 })
 
+app.put("/form/:id",(req,res) => {
+    const queryText = `UPDATE feedback SET flagged=$1 WHERE id=$2`;
+    pool.query(queryText,[req.body.flagged,req.params.id])
+        .then(result => {
+            console.log("ASdfasdfasfd");
+            res.sendStatus(200);
+        }).catch(error => {
+            console.log(error);
+            res.sendStatus(500);
+        })
+})
+
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);

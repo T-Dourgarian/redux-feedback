@@ -11,18 +11,17 @@ import Table from '@material-ui/core/Table';
 
 class Admin extends Component {
 
-    componentDidMount= () => {
+    componentDidMount = () => {
         this.resfreshFeedback();
     }
 
 
     resfreshFeedback = () => {
         axios({
-            method:"GET",
-            url:"/form"
+            method: "GET",
+            url: "/form"
         }).then(response => {
-            console.log(response.data)
-            this.props.dispatch({type:"SET_ADMIN_DATA",payload:response.data})
+            this.props.dispatch({ type: "SET_ADMIN_DATA", payload: response.data })
         }).catch(error => {
             console.log(error)
         })
@@ -35,6 +34,9 @@ class Admin extends Component {
                 <Table>
                     <TableHead>
                         <TableRow>
+                            <TableCell>
+                                Flag For Review
+                            </TableCell>
                             <TableCell>
                                 Feeling
                            </TableCell>
@@ -53,7 +55,7 @@ class Admin extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.adminDataReducer.map(feedback => <AdminItem refreshFeedback={this.resfreshFeedback} key={feedback.id} feedback={feedback}/>)}
+                        {this.props.adminDataReducer.map(feedback => <AdminItem refreshFeedback={this.resfreshFeedback} key={feedback.id} feedback={feedback} />)}
                     </TableBody>
                 </Table>
             </>
