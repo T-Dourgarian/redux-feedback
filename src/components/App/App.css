@@ -17,8 +17,21 @@
   font-size: large;
 }
 
-#submitBtn {
+#nextBtn {
   margin-left: 2%;
-  margin-top: 1%;
+  margin-top: 2%;
 }
 
+#prevBtn {
+  margin-right: 2%;
+  margin-top: 2%;
+}
+
+#formSlider {
+  width: 15%;
+}
+
+#emoji {
+  margin-left: 3%;
+  margin-right: 3%;
+}

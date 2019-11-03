@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Form from "../Form/Form";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Review from "../Review/Review";
 import Success from "../Success/Success";
 import AdminList from "../AdminList/AdminList";
@@ -23,11 +23,8 @@ class App extends Component {
           <Route exact path="/review" component={Review}></Route>
           <Route exact path="/success" component={Success}></Route>
           <Route exact path="/admin" component={AdminList}></Route>
-          <br/>
+          <br />
         </div>
-        <pre>
-          {JSON.stringify(this.props,null,2)}
-        </pre>
       </Router>
     );
   }

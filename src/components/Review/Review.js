@@ -7,18 +7,18 @@ import swal from 'sweetalert';
 
 class Form extends Component {
     handleSubmit = () => {
-        // axios({
-        //     method:"POST",
-        //     url:"/form",
-        //     data: {
-        //         ...this.props.formReducer,
-        //         date:this.getTime()
-        //     }
-        // }).then(response => {
-        //     console.log("post success")
-        // }).catch(error => {
-        //     console.log(error);
-        // })
+        axios({
+            method:"POST",
+            url:"/form",
+            data: {
+                ...this.props.formReducer,
+                date:this.getTime()
+            }
+        }).then(response => {
+            console.log("post success")
+        }).catch(error => {
+            console.log(error);
+        })
         swal("Success!", "Your feedback was submitted!", "success");
         this.props.history.push("/success");
     }

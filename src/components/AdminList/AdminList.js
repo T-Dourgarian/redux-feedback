@@ -12,6 +12,11 @@ import Table from '@material-ui/core/Table';
 class Admin extends Component {
 
     componentDidMount= () => {
+        this.resfreshFeedback();
+    }
+
+
+    resfreshFeedback = () => {
         axios({
             method:"GET",
             url:"/form"
@@ -48,7 +53,7 @@ class Admin extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.adminDataReducer.map(feedback => <AdminItem key={feedback.id} feedback={feedback}/>)}
+                        {this.props.adminDataReducer.map(feedback => <AdminItem refreshFeedback={this.resfreshFeedback} key={feedback.id} feedback={feedback}/>)}
                     </TableBody>
                 </Table>
             </>

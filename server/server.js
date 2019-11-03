@@ -11,12 +11,10 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 app.post('/form', (req, res) => {
-    console.log(req.body);
    let queryText = `INSERT INTO "feedback" ("feeling", "understanding", "support", "comments", "flagged", "date") VALUES ($1, $2, $3, $4, $5, $6)`;
 
     pool.query(queryText,[req.body.feeling,req.body.understanding,req.body.support,req.body.comments,false,req.body.date])
         .then(result => {
-            console.log(result);
             res.sendStatus(200);
         }).catch(error => {
             console.log(error);
@@ -30,8 +28,18 @@ app.get('/form', (req, res) => {
 
     pool.query(queryText)
         .then(result => {
-            console.log(result.rows);
             res.send(result.rows);
+        }).catch(error => {
+            console.log(error);
+            res.sendStatus(500)
+        })
+})
+
+app.delete("/form/:id",(req,res) => {
+    let queryText = `DELETE FROM "feedback" WHERE id=$1`;
+    pool.query(queryText,[req.params.id])
+        .then(() => {
+            res.sendStatus(200);
         }).catch(error => {
             console.log(error);
             res.sendStatus(500)
